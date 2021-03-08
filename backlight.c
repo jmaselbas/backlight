@@ -49,7 +49,7 @@ main(int argc, char **argv)
 	char *n, *p;
 
 	if (argc >= 2 && argv[1][0] == '-' && argv[1][1] == 'h') {
-		printf("usage: backlight [-h] [[=]VALUE[%]]\n");
+		puts("usage: backlight [-h] [[=]VALUE[%]]");
 		return 0;
 	}
 
