@@ -1,6 +1,8 @@
 # Install paths
 PREFIX := /usr/local
 
+CFLAGS += -Wall
+
 all: backlight
 
 install: all
