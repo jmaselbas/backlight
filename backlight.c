@@ -43,8 +43,7 @@ main(int argc, char **argv)
 {
 	const char *val_path = "/sys/class/backlight/intel_backlight/brightness";
 	const char *max_path = "/sys/class/backlight/intel_backlight/max_brightness";
-	FILE *f;
-	int val, max, mode;
+	int val, max;
 	long arg;
 	char *n, *p;
 
