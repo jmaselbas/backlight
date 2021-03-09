@@ -4,7 +4,7 @@
 #include <err.h>
 
 static int
-get(const char *path)
+bget(const char *path)
 {
 	FILE *f;
 	int ret, val;
@@ -22,7 +22,7 @@ get(const char *path)
 }
 
 static void
-set(const char *path, int val)
+bset(const char *path, int val)
 {
 	FILE *f;
 	int ret;
@@ -52,8 +52,8 @@ main(int argc, char **argv)
 		return 0;
 	}
 
-	max = get(max_path);
-	val = get(val_path);
+	max = bget(max_path);
+	val = bget(val_path);
 
 	if (argc >= 2) {
 		n = argv[1];
@@ -74,7 +74,7 @@ main(int argc, char **argv)
 		}
 		val = (val > max) ? max : val;
 		val = (val < 0) ? 0 : val;
-		set(val_path, val);
+		bset(val_path, val);
 	} else {
 		printf("%d\n", val);
 	}
