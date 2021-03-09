@@ -43,7 +43,7 @@ main(int argc, char **argv)
 {
 	const char *val_path = "/sys/class/backlight/intel_backlight/brightness";
 	const char *max_path = "/sys/class/backlight/intel_backlight/max_brightness";
-	int val, max;
+	int val, max, set;
 	long arg;
 	char *n, *p;
 
@@ -57,21 +57,14 @@ main(int argc, char **argv)
 
 	if (argc >= 2) {
 		n = argv[1];
-		if (n[0] == '=') {
-			arg = strtol(n + 1, &p, 10);
-			if (arg == LONG_MAX || (n + 1) == p)
-				errx(1, "Not a valid number");
-			if (p && p[0] == '%')
-				arg = (max * arg) / 100;
-			val = arg;
-		} else {
-			arg = strtol(n, &p, 10);
-			if (arg == LONG_MAX || n == p)
-				errx(1, "Not a valid number");
-			if (p && p[0] == '%')
-				arg = (max * arg) / 100;
-			val += arg;
-		}
+		n += set = n[0] == '=';
+		arg = strtol(n, &p, 10);
+		if (arg == LONG_MIN || arg == LONG_MAX || n == p)
+			errx(1, "Not a valid number");
+		if (p && p[0] == '%')
+			arg = (max * arg) / 100;
+
+		val = (set) ? arg : val + arg;
 		val = (val > max) ? max : val;
 		val = (val < 0) ? 0 : val;
 		bset(val_path, val);
