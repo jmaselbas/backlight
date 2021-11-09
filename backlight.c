@@ -3,6 +3,7 @@
 #include <limits.h>
 #include <stdio.h>
 #include <err.h>
+#include "config.h"
 
 static int
 bget(const char *path)
@@ -42,8 +43,6 @@ bset(const char *path, int val)
 int
 main(int argc, char **argv)
 {
-	const char *val_path = "/sys/class/backlight/intel_backlight/brightness";
-	const char *max_path = "/sys/class/backlight/intel_backlight/max_brightness";
 	int val, max, set;
 	long arg;
 	char *n, *p;
