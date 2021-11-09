@@ -3,7 +3,7 @@
 PREFIX ?= /usr/local
 MANPREFIX ?= $(PREFIX)/share/man
 
-VERSION = 0.0.0
+VERSION = 0.1.0
 
 SRC = backlight.c
 OBJ = $(SRC:.c=.o)
