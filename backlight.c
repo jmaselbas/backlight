@@ -46,10 +46,19 @@ main(int argc, char **argv)
 	int val, max, set;
 	long arg;
 	char *n, *p;
+	char *argv0 = argv[0];
 
-	if (argc >= 2 && argv[1][0] == '-' && argv[1][1] == 'h') {
-		puts("usage: backlight [-h] [[=]VALUE[%]]");
-		return 0;
+	if (argc >= 2 && argv[1][0] == '-') {
+		switch (argv[1][1]) {
+		case 'h':
+			printf("usage: %s [-hv] [[=]VALUE[%%]]\n", argv0);
+			exit(1);
+		case 'v':
+			printf("%s %s\n", argv0, VERSION);
+			exit(1);
+		default:
+			break;
+		}
 	}
 
 	max = bget(max_path);

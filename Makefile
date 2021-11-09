@@ -2,10 +2,13 @@
 # Install paths
 PREFIX ?= /usr/local
 
+VERSION = 0.0.0
+
 SRC = backlight.c
 OBJ = $(SRC:.c=.o)
 
 CFLAGS += -Wall
+CPPFLAGS += -DVERSION=\"$(VERSION)\"
 
 all: backlight
 
