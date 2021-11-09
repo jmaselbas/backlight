@@ -1,0 +1,43 @@
+.TH BACKLIGHT 1 backlight\-VERSION
+.SH NAME
+backlight \- read and set the screen brightness
+.ND simple curses text editor
+.SH SYNOPSIS
+.B backlight
+.RB [ \-hv ]
+.RI [ VALUE ]
+.SH DESCRIPTION
+.B backlight
+is a small utility to read and set the screen brightness.
+.TP
+If no
+.IR VALUE
+is given, then prints the current brightness value to stdout.
+If
+.IR VALUE
+starts with
+.B =
+then the value is set, otherwise the
+.IR VALUE
+is accumulated to the current brightness.
+The
+.IR VALUE
+can be signed and can be ended with
+.B %
+to use a percentage of the maximum brightness value.
+.SH OPTIONS
+.TP
+.B \-v
+prints version information to stderr and exit.
+.SH CUSTOMIZATION
+backlight is customized by creating a custom
+.PA config.h
+and (re)compiling the source code.
+This is because backlight might need special rights to read and set the
+screen brightness. And it seems a safer to only have a static path used
+to read and write to, instead of taking a path as an argument.
+.SH AUTHORS
+See the LICENSE file for authors.
+.SH LICENSE
+See the LICENSE file for copyright and license details.
+
