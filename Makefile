@@ -19,6 +19,12 @@ backlight: $(OBJ)
 
 $(OBJ): config.h
 
+dist:
+	mkdir -p backlight-$(VERSION)
+	cp $(SRC) config.def.h Makefile LICENSE backlight-$(VERSION)
+	tar cf - backlight-$(VERSION) | gzip > backlight-$(VERSION).tar.gz
+	rm -rf backlight-$(VERSION)
+
 install: all
 	mkdir -p $(DESTDIR)$(PREFIX)/bin
 	cp -f backlight $(DESTDIR)$(PREFIX)/bin
