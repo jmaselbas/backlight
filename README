@@ -1,0 +1,19 @@
+backlight
+=========
+
+backlight is a simple C program "replacement" of xbacklight.
+backlight however directly read and write to the sysfs entries.
+
+Building
+========
+
+To build backlight you have to run:
+
+    make
+
+Installing
+==========
+
+backlight should require privileges to read and write to the sysfs
+entries. Enabling suid on the installed binary might be needed depending
+on how you want to use this program.
